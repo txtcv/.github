@@ -1,14 +1,15 @@
 # txtcv
 
-**A developer-oriented CV builder for software engineers.**
+**A better `$HOME` for your CV**
 
-[txtcv] makes it simple to maintain and manage your professional resume using a workflow
-designed specifically for developers. Keep your CV in a JSON file following the [JSON
-Resume Schema](https://jsonresume.org/), and let txtcv handle the rest.
+Keep your CV in plain text in your favorite `$EDITOR` and let txtcv handle the rest.
+Finally, a CV workflow that makes sense for developers.
 
----
+[txtcv] lets you manage your CV as code. Store your CV in JSON following the [JSON
+Resume schema], put it in version control, and publish to txtcv with CLI or Github
+Actions.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Web Interface
 
@@ -39,4 +40,5 @@ Automatically publish your CV on every push:
     txtcv_auth_token: ${{ secrets.TXTCV_AUTH_TOKEN }}
 ```
 
+[JSON Resume schema]: https://jsonresume.org
 [txtcv]: https://txtcv.com
