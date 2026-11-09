@@ -2,43 +2,58 @@
 
 **A better `$HOME` for your CV**
 
-Keep your CV in plain text in your favorite `$EDITOR` and let txtcv handle the rest.
-Finally, a CV workflow that makes sense for developers.
+txtcv is a CLI-first plaintext CV builder for software developers. Keep your CV in YAML
+or JSON following the [JSON Resume schema], edit it in your favorite `$EDITOR`, and
+track changes in version control.
 
-[txtcv] lets you manage your CV as code. Store your CV in JSON following the [JSON
-Resume schema], put it in version control, and publish to txtcv with CLI or Github
-Actions.
+Validate your CV offline, preview it locally, and save it as a PDF from your browser. No
+account, watermark, or export limit.
 
-## Quick Start
+## Quick start
 
-### Web Interface
+Install with [Homebrew](https://brew.sh) on macOS or Linux:
 
-1. Sign in to [txtcv.com](https://txtcv.com) using your GitHub account
-2. Create a new CV and copy/paste your JSON resume
-3. Choose from multiple professional templates
-4. Share your CV with a unique link
-
-### CLI Tool
-
-Install the CLI via Homebrew and manage your CV locally:
-
-```bash
-$ brew install txtcv/tap/txtcv
-$ txtcv auth login
-$ txtcv publish --id <cv-id> cv.json
+```sh
+brew install --HEAD txtcv/tap/txtcv
 ```
 
-### GitHub Actions
+This builds the latest `main` branch from source, with Go installed as a build
+dependency.
 
-Automatically publish your CV on every push:
+Create a sample CV, replace the placeholder details in `cv.yaml`, then validate and
+preview it:
+
+```sh
+txtcv init
+txtcv validate
+txtcv serve
+```
+
+Prefer JSON? Use `txtcv init --format json` to create `cv.json` instead.
+
+Open http://localhost:9090. Refresh the page after editing your CV to see changes.
+
+## Choose a theme
+
+Choose from `default`, `minimal`, `code`, or `creative` in your CV:
 
 ```yaml
-- uses: txtcv/actions-publich@v1
-  with:
-    cv_id: your-cv-id
-    cv_path: cv.json
-    txtcv_auth_token: ${{ secrets.TXTCV_AUTH_TOKEN }}
+meta:
+  txtcv:
+    theme: code
 ```
 
+Or override it for a preview with `txtcv serve --theme creative`.
+
+## Save as PDF
+
+Use your browser's **Print to PDF**. The preview includes A4 print styles with margins
+and page-break rules. Use 100% scale, disable browser headers and footers, and enable
+background graphics to preserve colors.
+
+PDF creation happens locally in your browser.
+
+Explore the [CLI source and documentation](https://github.com/txtcv/txtcv) or the
+[Homebrew tap](https://github.com/txtcv/homebrew-tap).
+
 [JSON Resume schema]: https://jsonresume.org
-[txtcv]: https://txtcv.com
